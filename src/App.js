@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import TodoListTemplate from './components/TodoListTemplate';
+import Form from './components/Form';
+import TodoItemList from './components/TodoItemList';
 
-function App() {
+
+class App extends Component {
+
+id = 3
+
+state ={
+  input: '',
+  todos: [
+    { id:0, text: '리액트 소개', checked: false },
+    { id:1, text: '리액트 소개', checked: true },
+    { id:2, text: '리액트 소개', checked: false }
+  ]
+}
+
+handleChange = (e) =>{
+  this.setState({
+    input: e.target.value
+  });
+}
+
+handleCreate = () => {
+  const { input, todos}
+}
+render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TodoListTemplate form={<Form/>}>
+      <TodoItemList/>
+    </TodoListTemplate>
   );
+}
 }
 
 export default App;
